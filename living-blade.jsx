@@ -640,7 +640,7 @@ const ResponseBlock = ({ data, masterKey, animBase = 0 }) => {
 
 const DAILY_LIMIT = 5;
 
-default function LivingBlade() {
+  function LivingBlade() {
   const [screen, setScreen] = useState("home");
   const [master, setMaster] = useState("balanced");
   const [pressure, setPressure] = useState("steel");
