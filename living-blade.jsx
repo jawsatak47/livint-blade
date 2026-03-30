@@ -832,3 +832,4 @@ export default function LivingBlade() {
     </>
   );
 }
+window.LivingBlade = LivingBlade;
