@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+const { useState, useCallback } = React;
 
 const STYLES = `
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap');
@@ -640,7 +640,7 @@ const ResponseBlock = ({ data, masterKey, animBase = 0 }) => {
 
 const DAILY_LIMIT = 5;
 
-export default function LivingBlade() {
+default function LivingBlade() {
   const [screen, setScreen] = useState("home");
   const [master, setMaster] = useState("balanced");
   const [pressure, setPressure] = useState("steel");
