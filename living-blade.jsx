@@ -572,17 +572,37 @@ Return ONLY valid JSON with no markdown, no backticks:
 };
 
 const callAPI = async (system, question) => {
+  // Try to get the key from your browser's memory
+  let key = localStorage.getItem('LB_API_KEY');
+  
+  if (!key) {
+    key = prompt("The Masters require a Key to speak. Enter your Anthropic API Key:");
+    if (key) localStorage.setItem('LB_API_KEY', key);
+  }
+
   const res = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { 
+      "Content-Type": "application/json",
+      "x-api-key": key,
+      "anthropic-version": "2023-06-01",
+      "dangerouslyAllowBrowser": "true" // Required for this specific setup
+    },
     body: JSON.stringify({
-      model: "claude-sonnet-4-20250514",
+      model: "claude-3-sonnet-20240229",
       max_tokens: 1000,
       system,
       messages: [{ role: "user", content: question }]
     })
   });
+  
   const d = await res.json();
+  // If the key is wrong, clear it so you can try again
+  if (d.error) {
+    localStorage.removeItem('LB_API_KEY');
+    throw new Error(d.error.message);
+  }
+
   const txt = d.content.map(b => b.text || "").join("").replace(/```json|```/g, "").trim();
   return JSON.parse(txt);
 };
