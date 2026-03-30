@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Living Blade</title>
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <title>Living Blade | Wisdom Engine</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
-<body>
+<body style="margin:0; padding:0; background-color:#0C0A07;">
     <div id="root"></div>
 
     <script type="text/babel" src="living-blade.jsx"></script>
@@ -16,6 +16,7 @@
     <script type="text/babel">
         // This renders the component into the div above
         const root = ReactDOM.createRoot(document.getElementById('root'));
+        // We use the name of the function inside your .jsx file
         root.render(<LivingBlade />); 
     </script>
 </body>
